@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "breederhub", "breederhub\br
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "breederhub.Tests", "breederhub.Tests\breederhub.Tests.csproj", "{F73D318E-0208-4D5E-8669-EFA84571FCC8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "breederhub.DAL", "breederhub.DAL\breederhub.DAL.csproj", "{B81A9A98-9CDF-42DB-B66E-E69565481975}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{F73D318E-0208-4D5E-8669-EFA84571FCC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F73D318E-0208-4D5E-8669-EFA84571FCC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F73D318E-0208-4D5E-8669-EFA84571FCC8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B81A9A98-9CDF-42DB-B66E-E69565481975}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B81A9A98-9CDF-42DB-B66E-E69565481975}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B81A9A98-9CDF-42DB-B66E-E69565481975}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B81A9A98-9CDF-42DB-B66E-E69565481975}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

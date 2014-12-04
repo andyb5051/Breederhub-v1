@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="breederhubModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Breeds">
+          <Key>
+            <PropertyRef Name="BreedId" />
+          </Key>
+          <Property Name="BreedId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Dogs">
+          <Key>
+            <PropertyRef Name="DogId" />
+          </Key>
+          <Property Name="DogId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Breed_FK" Type="int" Nullable="false" />
+          <Property Name="DOB" Type="date" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="KCNumber" Type="varchar" MaxLength="50" />
+          <Property Name="Gender" Type="int" />
+        </EntityType>
+        <EntityType Name="Genders">
+          <Key>
+            <PropertyRef Name="GenderId" />
+          </Key>
+          <Property Name="GenderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Litters">
+          <Key>
+            <PropertyRef Name="LitterId" />
+          </Key>
+          <Property Name="LitterId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Dame_FK" Type="int" Nullable="false" />
+          <Property Name="Sire_FK" Type="int" Nullable="false" />
+          <Property Name="Puppy_FK" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="breederhubModelStoreContainer">
+          <EntitySet Name="Breeds" EntityType="Self.Breeds" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Dogs" EntityType="Self.Dogs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Genders" EntityType="Self.Genders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Litters" EntityType="Self.Litters" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="breederhubModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Breed">
+          <Key>
+            <PropertyRef Name="BreedId" />
+          </Key>
+          <Property Name="BreedId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Dog">
+          <Key>
+            <PropertyRef Name="DogId" />
+          </Key>
+          <Property Name="DogId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Breed_FK" Type="Int32" Nullable="false" />
+          <Property Name="DOB" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="KCNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Gender" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Gender">
+          <Key>
+            <PropertyRef Name="GenderId" />
+          </Key>
+          <Property Name="GenderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="7" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Litter">
+          <Key>
+            <PropertyRef Name="LitterId" />
+          </Key>
+          <Property Name="LitterId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Dame_FK" Type="Int32" Nullable="false" />
+          <Property Name="Sire_FK" Type="Int32" Nullable="false" />
+          <Property Name="Puppy_FK" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="breederhubEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Breeds" EntityType="Self.Breed" />
+          <EntitySet Name="Dogs" EntityType="Self.Dog" />
+          <EntitySet Name="Genders" EntityType="Self.Gender" />
+          <EntitySet Name="Litters" EntityType="Self.Litter" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="breederhubModelStoreContainer" CdmEntityContainer="breederhubEntities">
+          <EntitySetMapping Name="Breeds">
+            <EntityTypeMapping TypeName="breederhubModel.Breed">
+              <MappingFragment StoreEntitySet="Breeds">
+                <ScalarProperty Name="BreedId" ColumnName="BreedId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Dogs">
+            <EntityTypeMapping TypeName="breederhubModel.Dog">
+              <MappingFragment StoreEntitySet="Dogs">
+                <ScalarProperty Name="DogId" ColumnName="DogId" />
+                <ScalarProperty Name="Breed_FK" ColumnName="Breed_FK" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="KCNumber" ColumnName="KCNumber" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Genders">
+            <EntityTypeMapping TypeName="breederhubModel.Gender">
+              <MappingFragment StoreEntitySet="Genders">
+                <ScalarProperty Name="GenderId" ColumnName="GenderId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Litters">
+            <EntityTypeMapping TypeName="breederhubModel.Litter">
+              <MappingFragment StoreEntitySet="Litters">
+                <ScalarProperty Name="LitterId" ColumnName="LitterId" />
+                <ScalarProperty Name="Dame_FK" ColumnName="Dame_FK" />
+                <ScalarProperty Name="Sire_FK" ColumnName="Sire_FK" />
+                <ScalarProperty Name="Puppy_FK" ColumnName="Puppy_FK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
